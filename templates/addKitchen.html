@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-group row">
+   <label class="col-sm-1 col-form-label"></label>  
+   <div class="col-sm-4">
+      <h3>Enter Details</h3>
+   </div>
+</div>
+<form method="POST" enctype="multipart/form-data"> 
+   {% csrf_token %}
+   {{ form.as_p }}
+   <input type="submit" value="Submit">
+</form>
+</div>  
+</form>   
+{% endblock content %}

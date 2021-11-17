@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width", inital-scale=1.0>
+      <title>Mom's Magic</title>
+      <link rel="stylesheet" type = "text/css" href="{% static 'style.css' %}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   </head>
+   <body>
+      {% include 'navigation.html' %}
+      {% block content %}
+      {% endblock content %}
+      {% include 'footer.html' %}
+   </body>
+</html>

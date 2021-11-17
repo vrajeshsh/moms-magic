@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Enter Updated Details</h3>
+<br> <br>
+<form method="POST" class="post-form">
+   {% csrf_token %}  
+   <div class="form-group row">  
+      <label class="col-sm-2 col-form-label">KITCHEN NAME :</label>  
+      <input type="text" name="kitchen_name" placeholder="Kitchen Name"><br/>  
+   </div>
+   <div class="form-group row">
+      <label class="col-sm-2 col-form-label">KITCHEN DESCRIPTION : </label>  
+      <div class="col-sm-4">  
+         <input type="text" name="kitchen_desc" placeholder="Kitchen Description"><br/>
+      </div>
+   </div>
+   <div class="form-group row">
+      <label class="col-sm-2 col-form-label">KITCHEN ADDRESS : </label>  
+      <div class="col-sm-4">  
+         <input type="text" name="kitchen_address" placeholder="Kitchen Address"><br/>
+      </div>
+   </div>
+   <div class="form-group row">
+      <label class="col-sm-2 col-form-label">CUISINE TYPE :</label>  
+      <div class="col-sm-4">  
+         <input type="text" name="cuisine_type" placeholder="Cuisine Type"><br/>
+      </div>
+   </div>
+   <div class="form-group row">
+      <label class="col-sm-1 col-form-label"></label>  
+      <div class="col-sm-4">  
+         <button type="submit" class="btn btn-success">Update</button>  
+      </div>
+   </div>
+   </div>  
+</form>
+{% endblock content %}

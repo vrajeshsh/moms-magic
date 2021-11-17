@@ -1,0 +1,31 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+       <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a href="/" class="navbar-brand"><span class="glyphicon glyphicon-picture"></span> MOM'S MAGIC</a>
+       </div>
+       <div class="collapse navbar-collapse" id="bs-nav-demo">
+          <ul class="nav navbar-nav">
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+             <li><a href="/kitchens/addKitchen">ADD A KITCHEN</a></li>
+             <li><a href="/kitchens/viewKitchen">VIEW KITCHENS</a></li>
+             <!-- <li><a href="accounts/login">LOGIN</a></li>					 --> 
+             {% if user.is_authenticated %}
+             <li>Hello, {{user.first_name}}</li>
+             <li><a href="/accounts/logout">LOGOUT</a></li>
+             {% else %}
+             <li><a href="/accounts/register">REGISTER</a></li>
+             <li><a href="/accounts/login">LOGIN</a></li>
+             {% endif %}
+          </ul>
+       </div>
+    </div>
+ </nav>
+
+ 

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<div class="jumbotron" id = "backgroundChange">
+   <h1 > Now, home is never too far away! </h1>
+   <form class = "search-container" name = "myForm" autocomplete="off"  onsubmit="return validateForm()" method="post">
+      <div class = "autocomplete" >
+         <input class = "search-input" type="text" placeholder="Location.." name="search">
+         <button class = "search-button" type="submit" value="Submit"><i class="fa fa-search"></i></button>
+      </div>
+   </form>
+</div>
+{% if messages %}
+{%for message in messages %}
+{%if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<div class="alert alert-success alert-dismissible" role="alert">
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   <span aria-hidden="true">&times;</span>
+   </button>
+   {{ message }}
+</div>
+{% endif %}
+{%if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<div class="alert alert-error alert-dismissible" role="alert">
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   <span aria-hidden="true">&times;</span>
+   </button>
+   {{ message }}
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{%if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<div class="alert alert-error alert-dismissible" role="alert">
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   <span aria-hidden="true">&times;</span>
+   </button>
+   {{ message }}
+</div>
+{% endif %}
+<h2>Recent Activities</h2>
+
+<ul>
+   {% for action in actions %}
+   <li>{{action.user.username}}{{action.verb}}</li>
+   {% endfor %}
+   </ul>
+{% endblock content %}

@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div style="width: 100%;">
+   <div style="width: 25%; float: left; margin-left: 5%;">
+      <img src="http://i.imgur.com/qK42fUu.jpg" style="height: 200px;width: 200px;">
+   </div >
+   <div style="display: inline-block;">
+      <h2>{{ data.kitchen_name }}</h2>
+      <h4>{{ data.cuisine_type }}</h4>
+      <h4 onclick="window.location.href='/accounts/profile/{{ user.username }}'">Owned By <u>{{user.first_name}}</u></h4>
+      <div class="action_btn" align="left">
+         <button name="submit" onclick="window.location.href='/kitchens/editKitchen/{{ data.id }}'" class="action_btn submit" type="submit" id="Edit">Edit</button>
+         <button name="submit" onclick="location.href = '/kitchens/deleteKitchen/{{ data.id }}'"class="action_btn cancel" type="submit" id="Delete">Delete</button>
+      </div>
+      <br>
+      <button name="submit" class="action_btn comment" type="submit" id="comment">ADD A COMMENT</button>
+      <div id="myModal" class="modal">
+         <div class="modal-content" id="form">
+            <span class="close">&times;</span>
+            <h2 style="margin-left: 15px;margin-bottom: 15px;">Add a review</h2>
+            <textarea style="margin:15px" class = "name_text" id = "first_name" placeholder="First Name"></textarea>
+            <textarea style="margin:15px" class = "name_text" id = "last_name" placeholder="Last Name"></textarea>
+            <br>
+            
+            <textarea style="width: 100%;margin:15px;padding:15px" id = "desc" placeholder="Add review here..."></textarea>
+            <button type = "submit" onclick="onPostClick()" class="buttonPost">POST</button>
+         </div>
+      </div>
+   </div>
+</div>
+<hr>
+<div style="margin-left:5%; margin-right:5%;margin-bottom:50px;width:100%;">
+   <div style=" width:65%; float:left">
+      <h2 style=" margin-top:50px;">About</h2>
+      <p  style="margin-left:10%">{{ data.kitchen_desc }}</p>
+   </div>
+   <div class="map" style=" width:30%;float: right;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14745.232837380072!2d88.37960876977539!3d22.492616599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027169df8e4277%3A0x4a8ec2ce97468eb2!2sMom&#39;s%20Magic!5e0!3m2!1sen!2sin!4v1632310847185!5m2!1sen!2sin" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+   </div>
+</div>
+{% if messages %}
+{%for message in messages %}
+{%if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<div class="alert alert-info alert-dismissible" role="alert">
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   <span aria-hidden="true">&times;</span>
+   </button>
+   {{ message }}
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+<div style="margin-left:5%;margin-right:5%;">
+   <h2 >Reviews</h2>
+   
+   <div style="width: 100%; float:left; margin-top: 20px; border: 1px solid;padding: 20px;">
+      <img src="http://i.imgur.com/qK42fUu.jpg" style="height: 50px;width: 50px;">
+      <div style="display: inline-block;margin-left: 20px;">
+         <h4 class="text-warning mt-4 mb-4">
+            <b><span id="reviewer_name">Reviewer Name</span></b>
+         </h4>
+         <p id="reviewer_comment">NO COMMENTS YET. BE THE FIRST TO COMMENT.</p>
+         
+      </div>
+   </div>
+</div>
+   <br>  
+   <br>  
+   <script>
+      var modal = document.getElementById("myModal");
+      
+      var btn = document.getElementById("comment");
+      
+      var span = document.getElementsByClassName("close")[0];
+      
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+      
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      
+   </script>
+   <script
+      src="https://code.jquery.com/jquery-3.5.0.min.js"
+      integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"></script>
+   <script>
+      function onPostClick(){
+         var first_name = document.getElementById("first_name").value
+         var last_name = document.getElementById("last_name").value
+         var comment = document.getElementById("comment").value
+         $.ajax({
+ 
+            // The URL for the request
+            url: "/kitchens/kitchenComment/",
+            // The data to send (will be converted to a query string)
+            data: {
+                first_name :first_name,
+                last_name : last_name,
+                comment : comment,
+            },
+         
+            // Whether this is a POST or GET request
+            type: "POST",
+         
+            // The type of data we expect back
+            dataType : "json",
+
+            headers: {'X-CSRFToken': csrftoken},
+         })
+          // Code to run if the request succeeds (is done);
+          // The response is passed to the function
+          .done(function( json ) {
+            $('#myModal .close').click();
+            $('#reviewer_name').text(json.first_name);
+            $('#reviewer_comment').text(json.comment);
+
+          })
+          // Code to run if the request fails; the raw request and
+          // status codes are passed to the function
+          .fail(function( xhr, status, errorThrown ) {
+            alert( "Sorry, there was a problem!" );
+            console.log( "Error: " + errorThrown );
+            console.log( "Status: " + status );
+            console.dir( xhr );
+          })
+          
+          
+         }
+         function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+   </script>
+   {% endblock content %}

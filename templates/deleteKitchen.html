@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>DELETE KITCHEN</h3>
+<div class="main">
+   <!-- Create a Form -->
+   <form method="POST">
+      <!-- Security token by Django -->
+      {% csrf_token %}
+      Are you sure you want to delete this item ?
+      <input type="submit" value="Yes" />
+      <a href="/">Cancel </a>
+   </form>
+</div>
+{% endblock content %}

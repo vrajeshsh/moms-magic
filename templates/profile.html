@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Welcome to {{user.first_name}}'s Profile</h3>
+
+<h4>Username : {{ user.username }}</h4>
+<h4>First Name : {{ user.first_name }}</h4>
+<h4>Last Name : {{ user.last_name }}</h4>
+<h4>Email : {{ user.email }}</h4>
+<h4>Password : {{ user.password }}</h4>
+
+<button name="submit" onclick="window.location.href='/accounts/editAccount/{{ user.username }}'" class="action_btn submit" type="submit" id="Edit">Edit</button>
+
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2>All Kitchens</h2>
+{% for kitchen in kitchens %}
+<div class="col-lg-4 col-sm-6">
+   <div class="thumbnail" onclick="location.href = '/kitchens/kitchenDetail/{{ kitchen.id }}'">
+      <img src="http://i.imgur.com/qK42fUu.jpg">
+      <div class="desc">{{ kitchen.kitchen_name }}</div>
+      <div class="description">
+         {{ kitchen.kitchen_desc }}
+      </div>
+   </div>
+</div>
+{% endfor%}
+{% endblock content %}
