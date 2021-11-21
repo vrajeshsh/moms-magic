@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-pe6m*kzlr7#!=0*no%6#p^_fw^r_mhg!cfc19_$xunq9%b-tm)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['momsmagic.herokuapp.com/','127.0.0.1']
 
 
 # Application definition
@@ -79,16 +80,18 @@ WSGI_APPLICATION = 'MomsMagic.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'MomsMagic',
-        'USER':'postgres',
-        'PASSWORD' : 'Theknights5!',
-        'HOST':'localhost'
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {'default':dj_database_url.config()}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'MomsMagic',
+            'USER':'postgres',
+            'PASSWORD' : 'Theknights5!',
+            'HOST':'localhost'
+        }
     }
-}
 
 
 # Password validation

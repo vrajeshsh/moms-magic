@@ -52,8 +52,7 @@
 {% endfor %}
 {% endif %}
 <div style="margin-left:5%;margin-right:5%;">
-   <h2 >Reviews</h2>
-   
+   <h2 >Reviews</h2> 
    <div style="width: 100%; float:left; margin-top: 20px; border: 1px solid;padding: 20px;">
       <img src="http://i.imgur.com/qK42fUu.jpg" style="height: 50px;width: 50px;">
       <div style="display: inline-block;margin-left: 20px;">
@@ -129,6 +128,7 @@
           // The response is passed to the function
           .done(function( json ) {
             $('#myModal .close').click();
+            console.log(json)
             $('#reviewer_name').text(json.first_name);
             $('#reviewer_comment').text(json.comment);
 

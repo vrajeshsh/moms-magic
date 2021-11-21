@@ -1,8 +1,6 @@
 
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, redirect, render, \
-    HttpResponseRedirect
-
+from django.shortcuts import get_object_or_404, redirect, render, HttpResponseRedirect
 from .models import Kitchen, Review
 from actions.models import Action
 from .forms import KitchensForm
@@ -23,7 +21,7 @@ def addKitchen(request):
     # field names as keys
 
     context = {}
-    user = User.objects.get(username=request.session.get('username'))
+    
 
     # add the dictionary during initialization
 
@@ -33,11 +31,11 @@ def addKitchen(request):
         form.save()
         messages.success(request, 'Form submission successful')
 
-    action = Action(user=user, verb='add a Kitchen', target=form)
-
-    action.save()
+    
     context['form'] = form
     return render(request, 'addKitchen.html', context)
+
+
 
 
 def viewKitchen(request):

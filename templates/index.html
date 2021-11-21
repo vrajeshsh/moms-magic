@@ -39,11 +39,6 @@
    {{ message }}
 </div>
 {% endif %}
-<h2>Recent Activities</h2>
 
-<ul>
-   {% for action in actions %}
-   <li>{{action.user.username}}{{action.verb}}</li>
-   {% endfor %}
-   </ul>
+<button name="submit" onclick="window.location.href='/actions/viewFeed/{{ user.username }}'" class="action_btn submit" type="submit" id="Edit">VIEW FEED</button>
 {% endblock content %}

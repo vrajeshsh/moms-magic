@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<ul>
+    {% for action in actions %}
+    print("username: ",{{action.user.username}})
+    print("verb: ",{{action.verb}})
+    <li>{{action.user.username}}{{action.verb}}</li>
+
+    {%empty%}
+        <li>No activity yet.</li>
+
+    {% endfor %}
+    </ul>
+{% endblock content %}
