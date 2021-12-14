@@ -1,20 +1,26 @@
+<title>Kitchen Details</title>
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<h2>Kitchens Details</h2>
+<br/>
+<br/>
 <div style="width: 100%;">
    <div style="width: 25%; float: left; margin-left: 5%;">
-      <img src="http://i.imgur.com/qK42fUu.jpg" style="height: 200px;width: 200px;">
+      <img src="/static/images/fooddefault.jpg" style="height: 200px;width: 200px;box-shadow: 6px 6px;border:1px" >
    </div >
    <div style="display: inline-block;">
       <h2>{{ data.kitchen_name }}</h2>
       <h4>{{ data.cuisine_type }}</h4>
       <h4 onclick="window.location.href='/accounts/profile/{{ user.username }}'">Owned By <u>{{user.first_name}}</u></h4>
       <div class="action_btn" align="left">
-         <button name="submit" onclick="window.location.href='/kitchens/editKitchen/{{ data.id }}'" class="action_btn submit" type="submit" id="Edit">Edit</button>
-         <button name="submit" onclick="location.href = '/kitchens/deleteKitchen/{{ data.id }}'"class="action_btn cancel" type="submit" id="Delete">Delete</button>
+         <!-- <button name="submit" onclick="window.location.href='/kitchens/editKitchen/{{ data.id }}'" class="action_btn submit" type="submit" id="Edit">Edit</button>
+         <button name="submit" onclick="location.href = '/kitchens/deleteKitchen/{{ data.id }}'"class="action_btn cancel" type="submit" id="Delete">Delete</button> -->
+         <button name="submit" onclick="window.location.href='/kitchens/editKitchen/{{ data.id }}'" class="btn warning" type="submit" value="Submit" style="border: 2px solid #ff9800;" id="Edit">Edit</button>
+         <button name="submit" onclick="location.href = '/kitchens/deleteKitchen/{{ data.id }}'" class="btn success" type="submit" value="Submit" style="border: 2px solid #04AA6D;"  id="Delete">Delete</button>
       </div>
-      <br>
-      <button name="submit" class="action_btn comment" type="submit" id="comment">ADD A COMMENT</button>
+      <br/>
+      <button name="submit" class="btn info" type="submit" id="comment" style="border: 2px solid #2196F3;">ADD A COMMENT</button>
       <div id="myModal" class="modal">
          <div class="modal-content" id="form">
             <span class="close">&times;</span>
@@ -34,12 +40,10 @@
    <div style=" width:65%; float:left">
       <h2 style=" margin-top:50px;">About</h2>
       <p  style="margin-left:10%">{{ data.kitchen_desc }}</p>
-   </div>
-   <div class="map" style=" width:30%;float: right;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14745.232837380072!2d88.37960876977539!3d22.492616599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027169df8e4277%3A0x4a8ec2ce97468eb2!2sMom&#39;s%20Magic!5e0!3m2!1sen!2sin!4v1632310847185!5m2!1sen!2sin" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      <h2 >Reviews</h2> 
    </div>
 </div>
-{% if messages %}
+<!-- {% if messages %}
 {%for message in messages %}
 {%if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
 <div class="alert alert-info alert-dismissible" role="alert">
@@ -50,11 +54,11 @@
 </div>
 {% endif %}
 {% endfor %}
-{% endif %}
+{% endif %} -->
 <div style="margin-left:5%;margin-right:5%;">
-   <h2 >Reviews</h2> 
+   
    <div style="width: 100%; float:left; margin-top: 20px; border: 1px solid;padding: 20px;">
-      <img src="http://i.imgur.com/qK42fUu.jpg" style="height: 50px;width: 50px;">
+      <img src="/static/images/default.png" style="height: 50px;width: 50px;">
       <div style="display: inline-block;margin-left: 20px;">
          <h4 class="text-warning mt-4 mb-4">
             <b><span id="reviewer_name">Reviewer Name</span></b>
@@ -64,8 +68,8 @@
       </div>
    </div>
 </div>
-   <br>  
-   <br>  
+   <br/>  
+   <br/>  
    <script>
       var modal = document.getElementById("myModal");
       

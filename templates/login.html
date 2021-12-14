@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Login</title>
-   </head>
-   <body>
+<title>Login</title>
+{% extends 'base.html' %}
+{% block content %}
       <h2>USER LOGIN</h2>
-      <br/>
+      <!-- <br/>
       <form action="login" method="POST">
          {%csrf_token%}
          <div class="form-group row">  
@@ -25,6 +19,30 @@
          {% for message in messages %}
          <h3> {{message}}  </h3>
          {% endfor %}
-      </div>
-   </body>
-</html>
+      </div> -->
+
+      <form action="login" method="post">
+         {%csrf_token%}
+         <div class="imgcontainer">
+           <img  src="/static/images/img_avatar2.png" alt="Avatar" class="avatar">
+         </div>
+       
+         <div class="loginContainer">
+           <label for="uname"><b>Username</b></label>
+           <input type="text" placeholder="Enter Username" name="uname" required>
+       
+           <label for="psw"><b>Password</b></label>
+           <input type="password" placeholder="Enter Password" name="psw" required>
+               
+           <button type="submit">Login</button>
+           <label>
+             <input type="checkbox" checked="checked" name="remember"> Remember me
+           </label>
+         </div>
+       
+         <div class="cancel" style="background-color:#f1f1f1">
+           <button type="button" class="cancelbtn">Cancel</button>
+           <span class="psw">Forgot <a href="#">password?</a></span>
+         </div>
+       </form>
+   {% endblock content %}

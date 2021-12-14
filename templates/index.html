@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-<div class="jumbotron" id = "backgroundChange">
-   <h1 > Now, home is never too far away! </h1>
-   <form class = "search-container" name = "myForm" autocomplete="off"  onsubmit="return validateForm()" method="post">
-      <div class = "autocomplete" >
-         <input class = "search-input" type="text" placeholder="Location.." name="search">
-         <button class = "search-button" type="submit" value="Submit"><i class="fa fa-search"></i></button>
-      </div>
-   </form>
+<div id="homeBackground">
+   <div id = "a">
+      <h1 class = "heading"> Now, home is never too far away! </h1>
+      <form class = "search-container" name = "myForm"  onsubmit="return validateForm()" method="post">
+           
+            <input class = "search-input" type="text" placeholder="Search Cuisine Type / Location" name="search">
+            <br/>
+            <br/>
+            <!-- <button class = "search-button" type="submit" value="Submit"><i class="fa fa-search"></i></button> -->
+            <button class="btn warning" type="submit" value="Submit" style="border: 2px solid #ff9800;">View Feed</button>
+            <button class="btn success" type="submit" value="Submit" style="border: 2px solid #04AA6D;">Submit</button>
+      </form>
+   </div>
 </div>
 {% if messages %}
 {%for message in messages %}
@@ -40,5 +44,7 @@
 </div>
 {% endif %}
 
-<button name="submit" onclick="window.location.href='/actions/viewFeed/{{ user.username }}'" class="action_btn submit" type="submit" id="Edit">VIEW FEED</button>
+<p class = "para" style="margin:50px 15px 50px 15px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget dui at purus accumsan fermentum. Nullam vitae lectus nibh.<br/> Praesent massa eros, placerat in nulla at, ultricies faucibus velit. Donec consectetur lorem felis. Pellentesque mattis,<br/> justo sit amet lacinia venenatis, nisi lorem dapibus velit, eu pellentesque augue risus eu augue. Phasellus lacinia tincidunt augue,<br/> in blandit urna. Duis eu iaculis ante. Aenean egestas lectus vitae mi commodo ultricies. Integer imperdiet sit amet nulla nec consectetur.<br/> Nunc dapibus dignissim placerat. Duis porta magna non leo molestie, non suscipit enim vestibulum. Suspendisse potenti.<br/> In placerat purus ut orci rutrum fermentum. Pellentesque auctor malesuada magna non efficitur.</p>
+
+</div>
 {% endblock content %}

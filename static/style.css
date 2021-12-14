@@ -1,21 +1,16 @@
-body { padding-top: 70px; }
+* {
+	box-sizing: border-box;
+	font-family: 'Readex Pro', sans-serif;
+}
+
     .jumbotron {
-      color: #2c3e50;
-      background-image: #ecf0f1;
+      color:#2c3e50;
+      
     }
 	.jumbotron>h1{
 		text-align: center;
 	}
-    .navbar-inverse {
-      background: #2c3e50;
-      color: white;
-    }
-    .navbar-inverse .navbar-brand, .navbar-inverse a{
-      color:white;
-    }
-    .navbar-inverse .navbar-nav>li>a {
-      color: white;
-    } 
+    
 
 	.ajax-container{
 		width: 50%;
@@ -46,16 +41,11 @@ body { padding-top: 70px; }
 	margin:auto;
 	width: 500px;
 	margin-top: 70px;
-	
+	padding: 50px;
 	
 }
 
 
-.search-input{
-	width: 400px;
-	padding: 5px;
-	border-radius: 10px;
-}
 .search-button{
 	padding: 5px;
 }
@@ -78,125 +68,7 @@ body { padding-top: 70px; }
 		list-style: none;
 		}	
 	
-.footer{
-	display: block;
-	padding: 20px;
-	border-style: outset;
-	margin-top: 30px;
-	}
-	
-	.footer-col{
-	width: 33%;
-	padding: 0 15px;
-	}
-	
-	.footer-col h2{
-	text-transform: capitalize;
-	margin-bottom:35px;
-	font-weight:500;
-	position: relative;
-	}
-	
-	.footer-col h2::before{
-	content:'';
-	position: absolute;
-	left:0;
-	bottom:-10px;
-	background-color:#e91e63;
-	height:2px;
-	box-sizing: border-box;
-	width: 50px;
-	}
-	
-	.footer-col .social-links a i{
-	display: inline-block;
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-		text-align: center;
-		line-height: 40px;
-		background: #000;
-		margin-right: 5px;
-	margin-top:10px;
-		color: #fff;
-	text-decoration:none;
-	}
 
-	.social-links a i{
-	display: inline-block;
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-		
-		text-align: center;
-		line-height: 40px;
-		margin:auto;
-		color: #fff;
-	text-decoration:none;
-	}
-
-	.fa-facebook {
-		background-color: #3B5998; }
-		.fa-google-plus {
-			background-color: #DD4B39;
-	  margin-left: 40px; }
-	  .footer-col .social-links a i.fa-twitter {
-		background-color: #55ACEE;
-  margin-left: 40px;}
-	
-	.footer-col .social-links a i.fa-facebook {
-		  background-color: #3B5998; }
-		.footer-col .social-links a i.fa-twitter {
-		  background-color: #55ACEE;
-	margin-left: 40px;}
-		.footer-col .social-links a i.fa-google-plus {
-		  background-color: #DD4B39;
-	margin-left: 40px; }
-		.footer-col .social-links a i.fa-linkedin {
-		  background-color: #0976B4;
-	margin-left:40px; }
-		.footer-col .social-links a i.fa-instagram {
-		  background-color: #B7242A; }
-	
-		  .social-links-signup {
-			border:1px solid #ccc;
-			height:auto;
-			width: 500px;
-		  }
-	.footer-col ul li:not(:last-child){
-	margin-bottom:20px;
-	}
-	
-	.footer-col ul li a{
-	color:#000000;
-	margin-bottom: 16px;
-	text-decoration:none;
-	font-weight:300;
-	display:block;
-	transition: all 0.3s ease;
-	}
-	
-	.location{
-	position: relative;
-	  z-index: 2;
-	display: -webkit-box;
-	  display: -webkit-flex;
-	  display: -moz-box;
-	  display: -ms-flexbox;
-	  display: flex;
-	-webkit-box-align: center;
-	  -webkit-align-items: center;
-	  -moz-box-align: center;
-	  -ms-flex-align: center;
-	  align-items: center;
-	}
-	
-	.address {
-		text-align: right;
-	}
-	.map{
-	margin-left:10px;
-	}
 
 	
 	.switch {

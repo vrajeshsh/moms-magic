@@ -1,16 +1,28 @@
+<title>All Kitchens</title>
 {% extends 'base.html' %}
-{% load static %}
+
 {% block content %}
+
 <h2>All Kitchens</h2>
+<div class="row" style="margin-left: 50px;">
 {% for kitchen in kitchens %}
-<div class="col-lg-4 col-sm-6">
-   <div class="thumbnail" onclick="location.href = '/kitchens/kitchenDetail/{{ kitchen.id }}'">
-      <img src="http://i.imgur.com/qK42fUu.jpg">
-      <div class="desc">{{ kitchen.kitchen_name }}</div>
-      <div class="description">
-         {{ kitchen.kitchen_desc }}
-      </div>
+
+ <div class="column">
+   <div class="flip-card" onclick="location.href = '/kitchens/kitchenDetail/{{ kitchen.id }}'">
+   <div class="flip-card-inner">
+     <div class="flip-card-front">
+       <img src="http://i.imgur.com/qK42fUu.jpg" alt="Avatar" style="width:300px;height:250px;">
+     </div>
+     <div class="flip-card-back">
+       <h1>{{ kitchen.kitchen_name }}</h1> 
+       <p>{{ kitchen.kitchen_desc }}</p>
+     </div>
    </div>
+ </div>
 </div>
+
+
+
 {% endfor%}
+</div>
 {% endblock content %}
