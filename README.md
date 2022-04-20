@@ -1,3 +1,3 @@
 # UI Project
 
-This is a Web project I made for UI/UX class at Virginia Tech
+This is a Web project I made for UI/UX class at Virginia Tech. It is a website to choose and order healthy homecooked food.
